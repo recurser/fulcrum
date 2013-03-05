@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title><%= "#{@project.name} - " if @project %><%= t('fulcrum') %></title>
+  <%= csrf_meta_tag %>
+  <%= stylesheet_link_tag "//ajax.googleapis.com/ajax/libs/jqueryui/1/themes/smoothness/jquery-ui.css" %>
+  <%= stylesheet_link_tag :application %>
+  <%= javascript_include_tag :application %>
+  <script type="text/javascript">
+    I18n.defaultLocale = "<%= I18n.default_locale %>";
+    I18n.locale = "<%= I18n.locale %>";
+    I18n.fallbacks = true;
+  </script>
+</head>
+<body id="<%= page_id %>">
+
+<%= show_messages %>
+
+<div class="container">
+  <div class="row">
+    <div class="span6 offset3" id="login-wrapper">
+      <h1>
+          <%= image_tag 'logo.png' %>
+          Fulcrum
+      </h1>
+      <div class="alert alert-block">
+        <%= yield %>
+      </div>
+    </div>
+  </div>
+</div>
+
+<%= render :partial => "devise/shared/links" %>
+
+</body>
+</html>
+
